@@ -33,7 +33,7 @@ public class RegisterUserService {
      * @return
      */
     public NewUser registerNewUser(Credential credential){
-        NewUser newUser = new NewUser();
+        NewUser newUser = NewUser.builder().email(credential.getEmail()).nickname(credential.getNickname()).build();
         newUser.setNickname(credential.getNickname());
         newUser.setEmail(credential.getEmail());
         final ResponseEntity<NewUser> createdUser = this.restTemplate.postForEntity(this.url, newUser, NewUser.class);
